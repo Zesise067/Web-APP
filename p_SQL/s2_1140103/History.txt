@@ -11,6 +11,7 @@ backend
      3. 開啟 “跨網域 (CORS)”
      4. ✅ Step 2-3-1：後端新增「入庫 / 出庫 API」
      5. ✅ Step 2-4-1：後端新增「新增商品 API」
+     6. 讓 JSON 輸出自動排版（縮排 2 個空格）
     products.js
      1. Step 2-1-2：建立「商品資料（後端版）」
     package.json
