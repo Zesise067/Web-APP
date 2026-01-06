@@ -1,0 +1,32 @@
+修改紀錄
+ - ChatGPT 建議內容
+ - ChatGPT 遺漏內容
+
+---------------------------------------
+
+backend
+    index.js
+     1. Step 0-3：初始化後端（Node + Express）
+
+frontend
+    src
+        views
+            ProductList.vue
+             1. Step 1-1：建立「商品列表頁」
+             2. Step 1-2-2：修改商品列表頁
+             3. Step 1-2-5：在列表頁加「新增商品」按鈕
+            AddProduct.vue
+             1. Step 1-2-3：建立「新增商品頁」
+
+        router
+            index.js
+             1. Step 1-1：建立「商品列表頁」
+             2. Step 1-2-4：設定路由（加上 /add）
+
+        App.vue
+             1. Step 1-1：建立「商品列表頁」(遺漏部分)
+
+        store
+            products.js
+             1. Step 1-2-1：建立共用商品資料
+
