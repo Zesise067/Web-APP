@@ -34,31 +34,17 @@ app.get('/api/products', (req, res) => {
   })
 })
 
-// // // 入庫
-// // app.post('/api/products/:id/in', (req, res) => {
-// //   const id = Number(req.params.id)
-// //   const product = products.find(p => p.id === id)
-
-// //   if (!product) {
-// //     return res.status(404).json({ message: 'Product not found' })
-// //   }
-
-// //   product.stock += 1
-// //   res.json(product)
-// // })
+// // 入庫
 // app.post('/api/products/:id/in', (req, res) => {
-//   const id = req.params.id
+//   const id = Number(req.params.id)
+//   const product = products.find(p => p.id === id)
 
-//   db.run(
-//     'UPDATE products SET stock = stock + 1 WHERE id = ?',
-//     [id],
-//     function (err) {
-//       if (err || this.changes === 0) {
-//         return res.status(400).json({ message: 'Stock in failed' })
-//       }
-//       res.json({ success: true })
-//     }
-//   )
+//   if (!product) {
+//     return res.status(404).json({ message: 'Product not found' })
+//   }
+
+//   product.stock += 1
+//   res.json(product)
 // })
 app.post('/api/products/:id/in', (req, res) => {
   const id = req.params.id
@@ -70,50 +56,27 @@ app.post('/api/products/:id/in', (req, res) => {
       if (err || this.changes === 0) {
         return res.status(400).json({ message: 'Stock in failed' })
       }
-
-      // 寫入紀錄
-      db.run(
-        `INSERT INTO inventory_logs (product_id, action, quantity)
-         VALUES (?, 'IN', 1)`,
-        [id]
-      )
-
       res.json({ success: true })
     }
   )
 })
 
 
-
-// // // 出庫
-// // app.post('/api/products/:id/out', (req, res) => {
-// //   const id = Number(req.params.id)
-// //   const product = products.find(p => p.id === id)
-
-// //   if (!product) {
-// //     return res.status(404).json({ message: 'Product not found' })
-// //   }
-
-// //   if (product.stock <= 0) {
-// //     return res.status(400).json({ message: 'Stock not enough' })
-// //   }
-
-// //   product.stock -= 1
-// //   res.json(product)
-// // })
+// // 出庫
 // app.post('/api/products/:id/out', (req, res) => {
-//   const id = req.params.id
+//   const id = Number(req.params.id)
+//   const product = products.find(p => p.id === id)
 
-//   db.run(
-//     'UPDATE products SET stock = stock - 1 WHERE id = ? AND stock > 0',
-//     [id],
-//     function (err) {
-//       if (err || this.changes === 0) {
-//         return res.status(400).json({ message: 'Stock out failed' })
-//       }
-//       res.json({ success: true })
-//     }
-//   )
+//   if (!product) {
+//     return res.status(404).json({ message: 'Product not found' })
+//   }
+
+//   if (product.stock <= 0) {
+//     return res.status(400).json({ message: 'Stock not enough' })
+//   }
+
+//   product.stock -= 1
+//   res.json(product)
 // })
 app.post('/api/products/:id/out', (req, res) => {
   const id = req.params.id
@@ -125,19 +88,10 @@ app.post('/api/products/:id/out', (req, res) => {
       if (err || this.changes === 0) {
         return res.status(400).json({ message: 'Stock out failed' })
       }
-
-      // 寫入紀錄
-      db.run(
-        `INSERT INTO inventory_logs (product_id, action, quantity)
-         VALUES (?, 'OUT', 1)`,
-        [id]
-      )
-
       res.json({ success: true })
     }
   )
 })
-
 
 
 // // 新增商品
@@ -177,28 +131,6 @@ app.post('/api/products', (req, res) => {
       stock,
       location
     })
-  })
-})
-
-app.get('/api/logs', (req, res) => {
-  const sql = `
-    SELECT 
-      l.id,
-      p.name AS product_name,
-      l.action,
-      l.quantity,
-      l.created_at
-    FROM inventory_logs l
-    JOIN products p ON l.product_id = p.id
-    ORDER BY l.created_at DESC
-  `
-
-  db.all(sql, [], (err, rows) => {
-    if (err) {
-      console.error("SQL 錯誤詳細資訊:", err.message); // <--- 新增這行，看終端機噴什麼字
-      return res.status(500).json({ message: 'Query logs failed' })
-    }
-    res.json(rows)
   })
 })
 

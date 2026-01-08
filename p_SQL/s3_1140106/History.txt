@@ -12,10 +12,19 @@ backend
      4. ✅ Step 2-3-1：後端新增「入庫 / 出庫 API」
      5. ✅ Step 2-4-1：後端新增「新增商品 API」
      6. 讓 JSON 輸出自動排版（縮排 2 個空格）
+     7. ✅ Step 3-1-
+     8. ✅ Step 3-2-2：後端「入庫時寫紀錄」
+        ✅ Step 3-2-3：後端「出庫時寫紀錄」
+        ✅ Step 3-2-4：新增「查詢紀錄 API」
     products.js
      1. Step 2-1-2：建立「商品資料（後端版）」
     package.json
      1. Node 伺服器重啟工具
+    db.js
+     1. ✅ Step 3-1-2：建立資料庫連線（db.js）
+    schema.sql
+     1. ✅ Step 3-1-3：建立資料表（schema.sql）
+     2. ✅ Step 3-2-1：建立紀錄表 schema
 
 frontend
     src
