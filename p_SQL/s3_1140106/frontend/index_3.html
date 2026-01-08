@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>倉儲管理系統</title>
+</head>
+<body>
+  <!-- 這是你加的導覽列 (保留) -->
+  <nav style="margin-bottom: 15px;">
+    <a href="index.html">📦 商品列表</a> |
+    <a href="logs.html">📊 庫存異動紀錄</a>
+  </nav>
+
+  <h1>📦 商品列表</h1>
+
+  <!-- 💡 缺少的部分 A: 顯示資料的表格容器 -->
+  <table border="1">
+    <thead>
+      <tr>
+        <th>商品名稱</th>
+        <th>庫存</th>
+      </tr>
+    </thead>
+    <tbody id="productList">
+      <!-- JavaScript 會把資料塞在這裡 -->
+    </tbody>
+  </table>
+
+  <!-- 💡 缺少的部分 B: 抓取資料的 JavaScript -->
+  <script>
+    async function fetchProducts() {
+      try {
+        // 請確保你的後端 Server 有啟動 (例如 localhost:3000)
+        const response = await fetch('http://localhost:3000/products');
+        const products = await response.json();
+        
+        const list = document.getElementById('productList');
+        list.innerHTML = products.map(p => `
+          <tr>
+            <td>${p.name}</td>
+            <td>${p.quantity}</td>
+          </tr>
+        `).join('');
+      } catch (error) {
+        console.error("無法抓取資料:", error);
+      }
+    }
+
+    // 頁面開啟時執行
+    fetchProducts();
+  </script>
+</body>
+</html>

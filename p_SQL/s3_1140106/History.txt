@@ -44,13 +44,18 @@ frontend
              1. Step 1-2-3：建立「新增商品頁」
              2. ✅ Step 2-4-4：修改「新增商品頁」（改用後端）
 
+            StockLogs.vue
+             1. 未知領域： 網頁切換
+
         router
             index.js
              1. Step 1-1：建立「商品列表頁」
              2. Step 1-2-4：設定路由（加上 /add）
+             3. 未知領域： 網頁切換
 
         App.vue
              1. Step 1-1：建立「商品列表頁」(遺漏部分)
+             2. 未知領域： 網頁切換
 
         store
             products.js
@@ -67,3 +72,10 @@ frontend
 
         logs.js
          1. ✅ Step 3-2-6-2：新增 JS 抓取紀錄
+        
+        index.html
+         1. 基本設定
+         2. ✅ Step 3-2-7-1：加一個「導覽選單」
+         3. .html 設定文本（無法銜接 .vue，未完成品）
+         4. main.js 設定文本
+         5. 未知領域： 網頁切換
