@@ -1,7 +1,8 @@
 const express = require('express')
 const cors = require('cors') // 1. 引入套件
 const app = express()
-const PORT = 3000
+// const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 // const { products } = require('./products')
 const fs = require('fs')
@@ -215,6 +216,9 @@ db.exec(schema, (err) => {
   }
 })
 
+// app.listen(PORT, () => {
+//   console.log(`Backend running on http://localhost:${PORT}`)
+// })
 app.listen(PORT, () => {
-  console.log(`Backend running on http://localhost:${PORT}`)
+  console.log(`Server running on port ${PORT}`)
 })
